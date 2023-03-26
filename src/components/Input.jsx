@@ -5,7 +5,6 @@ import { Input as NBInput, FormControl, WarningOutlineIcon, Box } from 'native-b
 // import { HelperText } from 'react-native-paper';
 
 export function Input({ Label, invalid, errorStatus, textHelper, ...props }) {
-  console.log('status', errorStatus);
   return (
     <FormControl isInvalid={invalid} mb={4}>
       <FormControl.Label fontSize={34}>{Label}</FormControl.Label>

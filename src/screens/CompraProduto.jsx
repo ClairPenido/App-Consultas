@@ -13,8 +13,9 @@ export function CompraProduto() {
   return (
     <ScrollView marginY={5}>
       <Center w="100%" h="100%">
-        <Box safeArea px="5" py="5" w="90%" maxW="340" minH="620" bgColor="white" borderRadius={8}>
+        <Box safeArea px="5" py="5" w="100%" maxW="340" minH="620" bgColor="white" borderRadius={8}>
           <Heading
+            textAlign="center"
             pb={5}
             size="lg"
             fontWeight="600"
@@ -56,10 +57,22 @@ export function CompraProduto() {
                 color: 'warmGray.50',
               }}
             >
-              Dados da utilização do crédito
+              Dados da Utilização do Crédito
             </Heading>
-            <Input mt={5} name="cash" Label="Valor a ser utilizado:" placeholder="Insira o valor" />
-            <Input mt={5} name="notaFiscal" Label="Nota Fiscal:" placeholder="Insira o número" />
+            <Input
+              mt={5}
+              keyboardType="numeric"
+              name="cash"
+              Label="Valor a ser utilizado:"
+              placeholder="Insira o valor"
+            />
+            <Input
+              mt={5}
+              keyboardType="numeric"
+              name="notaFiscal"
+              Label="Nota Fiscal:"
+              placeholder="Insira o número"
+            />
             <Button title="Confirmar" />
           </VStack>
           <StatusBar style="auto" />

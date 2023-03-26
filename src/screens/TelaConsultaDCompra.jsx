@@ -11,7 +11,6 @@ import {
   ScrollView,
   KeyboardAvoidingView,
 } from 'native-base';
-import { TouchableWithoutFeedback, Keyboard } from 'react-native';
 import React, { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Input } from '../components/Input';
@@ -80,84 +79,77 @@ export function TelaConsultaDCompra() {
   };
 
   return (
-    <ScrollView>
-      <KeyboardAvoidingView
-        behavior="padding"
-        h={{
-          base: '700',
-          // lg: 'auto',
-        }}
-      >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <Center w="100%" h="100%">
-            <Box
-              safeArea
-              px="5"
-              py="60"
-              w="90%"
-              maxW="340"
-              minH="620"
-              bgColor="white"
-              borderRadius={8}
+    <ScrollView marginTop={5} keyboardDismissMode="on-drag">
+      <KeyboardAvoidingView behavior="padding">
+        <Center w="100%" h="100%">
+          <Box
+            safeArea
+            px="5"
+            py="60"
+            w="100%"
+            maxW="340"
+            minH="620"
+            bgColor="white"
+            borderRadius={8}
+          >
+            <Heading
+              size="xl"
+              fontWeight="600"
+              textAlign="center"
+              color="coolGray.800"
+              _dark={{
+                color: 'warmGray.50',
+              }}
             >
-              <Heading
-                size="xl"
-                fontWeight="600"
-                color="coolGray.800"
-                _dark={{
-                  color: 'warmGray.50',
+              Pesquisar
+            </Heading>
+            <VStack space={3} mt="10">
+              <Input
+                Label="CPF/CNPJ"
+                placeholder="CPF/CNPJ"
+                name="usuario"
+                value={CPFInput}
+                onChangeText={(value) => setCPFInput(value)}
+                ErrorMessage="Campo obrigatório"
+              />
+              <Input
+                Label="Nome"
+                placeholder="Nome"
+                name="Nome"
+                value={nameInput}
+                onChangeText={(value) => setNameInput(value)}
+              />
+              <Button
+                title="Consultar"
+                type="submit"
+                onPress={() => {
+                  handleSubmit();
                 }}
-              >
-                Pesquisar
-              </Heading>
-              <VStack space={3} mt="16">
-                <Input
-                  Label="CPF/CNPJ"
-                  placeholder="CPF/CNPJ"
-                  name="usuario"
-                  value={CPFInput}
-                  onChangeText={(value) => setCPFInput(value)}
-                  ErrorMessage="Campo obrigatório"
-                />
-                <Input
-                  Label="Nome"
-                  placeholder="Nome"
-                  name="Nome"
-                  value={nameInput}
-                  onChangeText={(value) => setNameInput(value)}
-                />
-                <Button
-                  title="Consultar"
-                  type="submit"
-                  onPress={() => {
-                    handleSubmit();
-                  }}
-                />
-              </VStack>
+              />
+            </VStack>
 
-              <Center>
-                <AlertDialog leastDestructiveRef={cancelRef} isOpen={isOpen} onClose={onClose}>
-                  <AlertDialog.Content>
-                    <AlertDialog.CloseButton />
-                    <AlertDialog.Header>Este Fornecedor não foi encontrado!</AlertDialog.Header>
-                    <AlertDialog.Body>
-                      Os dados inseridos não foram encontrados. Por favor, confira se os campos
-                      preenchidos estão com os dados corretos.
-                    </AlertDialog.Body>
-                    <AlertDialog.Footer>
-                      <BNS.Group space={2}>
-                        <BNS colorScheme="danger" onPress={onClose} ref={cancelRef}>
-                          Voltar
-                        </BNS>
-                      </BNS.Group>
-                    </AlertDialog.Footer>
-                  </AlertDialog.Content>
-                </AlertDialog>
-              </Center>
-              <StatusBar style="auto" />
-            </Box>
-          </Center>
-        </TouchableWithoutFeedback>
+            <Center>
+              <AlertDialog leastDestructiveRef={cancelRef} isOpen={isOpen} onClose={onClose}>
+                <AlertDialog.Content>
+                  <AlertDialog.CloseButton />
+                  <AlertDialog.Header>Não encontrado!</AlertDialog.Header>
+                  <AlertDialog.Body>
+                    Os dados inseridos não foram encontrados. Por favor, confira se os campos
+                    preenchidos estão corretos.
+                  </AlertDialog.Body>
+                  <AlertDialog.Footer>
+                    <BNS.Group space={2}>
+                      <BNS colorScheme="danger" onPress={onClose} ref={cancelRef}>
+                        Voltar
+                      </BNS>
+                    </BNS.Group>
+                  </AlertDialog.Footer>
+                </AlertDialog.Content>
+              </AlertDialog>
+            </Center>
+            <StatusBar style="auto" />
+          </Box>
+        </Center>
       </KeyboardAvoidingView>
     </ScrollView>
   );
