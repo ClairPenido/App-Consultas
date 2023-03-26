@@ -10,7 +10,6 @@ export function Button({ title, ...props }) {
       fontSize="md"
       minW={40} // largura
       h={16} // altura
-      mb={5} // margin bottom
       borderColor="black"
       borderRadius={5}
       borderWidth={1}
